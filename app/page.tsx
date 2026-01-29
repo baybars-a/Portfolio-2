@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useMemo } from 'react';
@@ -56,8 +55,8 @@ const App: React.FC = () => {
     <li>يحق للطالب طلب المساعدة، الشرح الإضافي، والاستفسار في أي مرحلة</li>
   </ul></div>
             <div className="text-lg md:text-2xl text-neutral-400 font-light leading-relaxed mb-16 max-w-4xl" dir="rtl">
-  <h3 className="text-5xl md:text-3xl lg:text-[rem] font-cairo text-[#f4538a] leading-[0.9] tracking-tighter uppercase font-bold text-right mb-8">آلية العمل</h3>
-  <p className="text-white mb-6">
+  <h3 className="text-5xl md:text-3xl lg:text-[rem] font-cairo text-[#f4538a] leading-tight tracking-tighter uppercase font-bold text-right mb-8">آلية العمل</h3>
+  <p className="text-white mb-6 text-right">
     نعتمد نظامًا يضمن استفادة الطالب العلمية والعملية من مشروعه، وليس مجرد تسليم الكود.
   </p>
   <ul className="space-y-4 list-disc list-inside font-cairo text-white text-right">
