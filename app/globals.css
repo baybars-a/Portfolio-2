@@ -1,8 +1,19 @@
+@font-face{
+  font-family: Google-font;
+  src:  url('https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Cairo:wght@200..1000&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+}
+@font-face{
+  font-family: Google-font;
+  src:  url('https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap');
+}
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Scrollbar Colors */
+  --sb-track: #000000;
+  --sb-thumb: #db2777; 
 }
 
 @theme inline {
@@ -19,8 +30,32 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Scrollbar Implementation */
+@layer base {
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--sb-thumb) var(--sb-track);
+  }
+
+  /* Chrome, Edge, and Safari */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px; /* For horizontal scrollbars */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--sb-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb);
+    border-radius: 10px;
+    /* Optional: creates a small gap between thumb and edge */
+    border: 2px solid var(--sb-track); 
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f472b6; /* Lighter pink on hover */
+  }
 }
