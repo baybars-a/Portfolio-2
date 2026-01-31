@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Instagram, MessageCircle, LucideMail } from 'lucide-react';
 import LogoAnimation from '../components/LogoAnimation';
@@ -12,6 +12,8 @@ import { PROJECTS, EXPERIENCES, PRIMARY_COLOR } from '../constants';
 
 const App: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('All');
+  const [activeSection, setActiveSection] = useState<string>('introduction');
+  const [showNav, setShowNav] = useState<boolean>(false);
   const categories = ['All', 'Web', 'AI', 'Mobile', 'Design'];
 
   const filteredProjects = useMemo(() => {
@@ -19,16 +21,75 @@ const App: React.FC = () => {
     return PROJECTS.filter(p => p.category === activeFilter);
   }, [activeFilter]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['introduction', 'work', 'contact'];
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      // Check if we've reached the introduction section
+      const introElement = document.getElementById('introduction');
+      if (introElement) {
+        const introTop = introElement.offsetTop;
+        setShowNav(window.scrollY >= introTop - 100);
+      }
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call once on mount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white selection:bg-[#f4538a] selection:text-white">
-      
+
+      {/* Fixed Sidebar Navigation */}
+      <nav className={`fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-8 transition-all duration-500 ${
+        showNav ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8 pointer-events-none'
+      }`}>
+        {[
+          { id: 'introduction', label: 'INTRODUCTION' },
+          { id: 'work', label: 'PORTFOLIO' },
+          { id: 'contact', label: 'CONTACT' }
+        ].map((section) => (
+          <a
+            key={section.id}
+            href={`#${section.id}`}
+            className="group flex items-center gap-4"
+          >
+            <div className={`h-px transition-all duration-300 ${
+              activeSection === section.id
+                ? 'w-16 bg-[#f4538a]'
+                : 'w-8 bg-neutral-700 group-hover:w-12 group-hover:bg-neutral-500'
+            }`} />
+            <span className={`text-[10px] tracking-[0.3em] font-bold transition-colors duration-300 ${
+              activeSection === section.id
+                ? 'text-[#f4538a]'
+                : 'text-neutral-600 group-hover:text-neutral-400'
+            }`}>
+              {section.label}
+            </span>
+          </a>
+        ))}
+      </nav>
+
       {/* Hero Section with Scroll Animation */}
       <section id="hero" className="relative z-20">
         <LogoAnimation />
       </section>
 
       {/* Introduction Section */}
-      <section className="px-6 md:px-20 py-32 md:py-60 relative overflow-hidden bg-black">
+      <section id="introduction" className="px-6 md:px-20 py-32 md:py-60 relative overflow-hidden bg-black">
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -66,10 +127,10 @@ const App: React.FC = () => {
     <li>جميع خطوات التنفيذ تتم بالتنسيق والمتابعة مع فريق العمل</li>
     <li>دعم ومتابعة حتى المناقشة</li>
   </ul>
-</div><p className="text-lg md:text-2xl text-neutral-400 font-cairo leading-relaxed mb-16 max-w-4xl text-white text-center">
+</div><p className="text-lg md:text-2xl text-neutral-400 font-cairo leading-relaxed mb-16 max-w-4xl text-white text-right">
              .تم اعتماد هذا النظام لضمان فهم الطالب للمشروع وتفادي أي ممارسات غير أكاديمية
             </p>
-            <p className="text-5xl md:text-3xl lg:text-[rem] font-cairo text-[#f4538a] leading-[0.9] tracking-tighter uppercase font-bold text-right mb-8">
+            <p className="text-5xl md:text-2xl lg:text-[rem] font-cairo text-[#f4538a] leading-[1.1] tracking-tighter uppercase font-normal text-right mb-8">
               ملاحظة : لا نقوم باستقبال الطلبات الخاصة بالواجبات القصيرة او الامتحانات او مقابلات العمل أو اي طلبات أخرى لا يستطيع من خلالها الطالب تطبيق المشروع و الاستفادة منه
             
             </p>
@@ -232,7 +293,7 @@ const App: React.FC = () => {
           
           <div className="flex gap-8 text-[10px] uppercase tracking-widest font-bold text-neutral-500">
             <a href="#introduction" className="hover:text-[#f4538a] transition-colors">Introduction</a>
-            <a href="#work" className="hover:text-[#f4538a] transition-colors">Work</a>
+            <a href="#work" className="hover:text-[#f4538a] transition-colors">Portfolio</a>
             {/* <a href="#experience" className="hover:text-[#f4538a] transition-colors">History</a> */}
             <a href="#contact" className="hover:text-[#f4538a] transition-colors">Contact</a>
           </div>
