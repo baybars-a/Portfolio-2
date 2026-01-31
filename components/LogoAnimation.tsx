@@ -18,10 +18,8 @@ const LogoAnimation: React.FC = () => {
   });
 
   const heartScale = useTransform(smoothProgress, [0, 0.3], [1.5, 0.45]);
-  const heartX = useTransform(smoothProgress, [0.3, 0.6], ['0%', '-35%']);
   const textOpacity = useTransform(smoothProgress, [0.5, 0.7], [0, 1]);
   const textX = useTransform(smoothProgress, [0.5, 0.75], [100, 0]);
-  const heartRotate = useTransform(smoothProgress, [0, 0.5], [0, -8]);
 
   const pinkPrimary = '#f4538a';
   const pinkShade = '#c13d60';
@@ -33,7 +31,7 @@ const LogoAnimation: React.FC = () => {
 
           {/* HEART */}
           <motion.div
-            style={{ scale: heartScale, x: heartX, rotate: heartRotate }}
+            style={{ scale: heartScale }}
             className="z-10 flex-shrink-0"
           >
             <svg
