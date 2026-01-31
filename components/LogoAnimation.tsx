@@ -115,14 +115,14 @@ const LogoAnimation: React.FC = () => {
             }}
             className="ml-12 text-left"
           >
-            <h1 className="text-5xl md:text-8xl lg:text-[10rem] font-black text-[#f4538a] leading-[0.9] tracking-tighter uppercase italic">
+            {/* <h1 className="text-5xl md:text-8xl lg:text-[10rem] font-black text-[#f4538a] leading-[0.9] tracking-tighter uppercase italic">
               CODE LIKE A
               <br />
               <span className="text-white not-italic">GIRL</span>
             </h1>
             <p className="text-neutral-500 mt-6 text-lg md:text-2xl font-light tracking-[0.4em] uppercase">
               Developer & Engineering Lead
-            </p>
+            </p> */}
           </motion.div>
 
           {/* SCROLL INDICATOR */}

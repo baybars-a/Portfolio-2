@@ -101,13 +101,13 @@ const App: React.FC = () => {
             <h3 className="text-3xl md:text-6xl font-black mb-16 leading-[1.1] tracking-tight">
               {/* Crafting digital experiences that <span className="text-neutral-500 italic">inspire</span> and <span className="text-[#f4538a]">empower</span> users across the globe. */}
             </h3>
-            <p className="text-lg md:text-3xl text-black-400 font-cairo font-bold leading-relaxed mb-16 max-w-4xl text-right" dir="rtl">
-              من الفكرة إلى التسليم تطبيقات، ويب، ذكاء اصطناعي، تقارير وشرح كامل للكود في 
+            <p className="text-base md:text-xl lg:text-2xl text-black-400 font-cairo font-bold leading-relaxed mb-16 max-w-4xl text-right" dir="rtl">
+              من الفكرة إلى التسليم تطبيقات، ويب، ذكاء اصطناعي، تقارير وشرح كامل للكود في
             </p>
-            <p className="text-5xl md:text-3xl lg:text-[rem] font-black text-[#f4538a] leading-[0.9] tracking-tighter uppercase italic text-center mb-16">
+            <p className="text-2xl md:text-4xl lg:text-5xl font-black text-[#f4538a] leading-[0.9] tracking-tighter uppercase italic text-center mb-16">
               Code Like a Girl
             </p>
-<div className="text-lg md:text-2xl text-neutral-400 font-light leading-relaxed mb-16 max-w-4xl" dir="rtl">
+<div className="text-sm md:text-base lg:text-lg text-neutral-400 font-light leading-relaxed mb-16 max-w-4xl" dir="rtl">
 <ul className="space-y-4 list-disc list-inside text-white text-right">
     <li>خبرة أكثر من 8 سنوات في برمجة مشاريع التخرج</li>
     <li>التزام كامل بالوقت وجودة التنفيذ</li>
@@ -115,8 +115,8 @@ const App: React.FC = () => {
     <li>مشاريع فردية وجماعية</li>
     <li>يحق للطالب طلب المساعدة، الشرح الإضافي، والاستفسار في أي مرحلة</li>
   </ul></div>
-            <div className="text-lg md:text-2xl text-neutral-400 font-light leading-relaxed mb-16 max-w-4xl" dir="rtl">
-  <h3 className="text-5xl md:text-3xl lg:text-[rem] font-cairo text-[#f4538a] leading-tight tracking-tighter uppercase font-bold text-right mb-8">آلية العمل</h3>
+            <div className="text-sm md:text-base lg:text-lg text-neutral-400 font-light leading-relaxed mb-16 max-w-4xl" dir="rtl">
+  <h3 className="text-2xl md:text-4xl lg:text-5xl font-cairo text-[#f4538a] leading-tight tracking-tighter uppercase font-bold text-right mb-8">آلية العمل</h3>
   <p className="text-white mb-6 text-right">
     نعتمد نظامًا يضمن استفادة الطالب العلمية والعملية من مشروعه، وليس مجرد تسليم الكود.
   </p>
@@ -127,10 +127,10 @@ const App: React.FC = () => {
     <li>جميع خطوات التنفيذ تتم بالتنسيق والمتابعة مع فريق العمل</li>
     <li>دعم ومتابعة حتى المناقشة</li>
   </ul>
-</div><p className="text-lg md:text-2xl text-neutral-400 font-cairo leading-relaxed mb-16 max-w-4xl text-white text-right">
+</div><p className="text-sm md:text-base lg:text-lg text-neutral-400 font-cairo leading-relaxed mb-16 max-w-4xl text-white text-right">
              .تم اعتماد هذا النظام لضمان فهم الطالب للمشروع وتفادي أي ممارسات غير أكاديمية
             </p>
-            <p className="text-5xl md:text-2xl lg:text-[rem] font-cairo text-[#f4538a] leading-[1.1] tracking-tighter uppercase font-normal text-right mb-8">
+            <p className="text-base md:text-xl lg:text-2xl font-cairo text-[#f4538a] leading-[1.1] tracking-tighter uppercase font-normal text-right mb-8">
               ملاحظة : لا نقوم باستقبال الطلبات الخاصة بالواجبات القصيرة او الامتحانات او مقابلات العمل أو اي طلبات أخرى لا يستطيع من خلالها الطالب تطبيق المشروع و الاستفادة منه
             
             </p>
