@@ -173,9 +173,9 @@ const App: React.FC = () => {
             <div className="max-w-2xl">
               <h2 className="text-xs uppercase tracking-[0.5em] text-[#f4538a] mb-8 font-grotesk">Portfolio</h2>
               <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 leading-none">Featured Projects</h3>
-              <p className="text-neutral-500 text-lg md:text-xl font-light leading-relaxed">
+              {/* <p className="text-neutral-500 text-lg md:text-xl font-light leading-relaxed">
                 A selection of engineering and design solutions.
-              </p>
+              </p> */}
             </div>
 
             <div className="flex flex-wrap gap-2 p-1.5 bg-neutral-900/80 backdrop-blur-md rounded-2xl border border-neutral-800">
