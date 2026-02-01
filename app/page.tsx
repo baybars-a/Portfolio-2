@@ -14,6 +14,7 @@ const App: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('All');
   const [activeSection, setActiveSection] = useState<string>('introduction');
   const [showNav, setShowNav] = useState<boolean>(false);
+  const [showContent, setShowContent] = useState<boolean>(false);
   const categories = ['All', 'Web', 'AI', 'Mobile', 'Design'];
 
   const filteredProjects = useMemo(() => {
@@ -52,11 +53,21 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-[#f4538a] selection:text-white">
+      {/* Logo Animation */}
+      <LogoAnimation onAnimationComplete={() => setShowContent(true)} />
 
-      {/* Fixed Sidebar Navigation */}
-      <nav className={`fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-8 transition-all duration-500 ${
-        showNav ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8 pointer-events-none'
-      }`}>
+      {/* Main Content - Shows after animation */}
+      <AnimatePresence>
+        {showContent && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Fixed Sidebar Navigation */}
+            <nav className={`fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-8 transition-all duration-500 ${
+              showNav ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8 pointer-events-none'
+            }`}>
         {[
           { id: 'introduction', label: 'INTRODUCTION' },
           { id: 'work', label: 'PORTFOLIO' },
@@ -106,11 +117,6 @@ const App: React.FC = () => {
           </a>
         ))}
       </nav>
-
-      {/* Hero Section with Scroll Animation */}
-      <section id="hero" className="relative z-20">
-        <LogoAnimation />
-      </section>
 
       {/* Introduction Section */}
       <section id="introduction" className="px-6 md:px-20 py-32 md:py-60 relative overflow-hidden z-10">
@@ -354,6 +360,9 @@ const App: React.FC = () => {
           </button>
         </div>
       </footer>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
