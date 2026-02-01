@@ -17,7 +17,12 @@ const LogoAnimation: React.FC = () => {
     restDelta: 0.001,
   });
 
-  const heartScale = useTransform(smoothProgress, [0, 0.3], [1.5, 0.45]);
+  // Heart grows from normal size to very large (zoom into heart effect)
+  const heartScale = useTransform(smoothProgress, [0, 0.5, 1], [1, 3, 15]);
+
+  // Fade out the heart stroke as it gets very large
+  const heartOpacity = useTransform(smoothProgress, [0.7, 0.95], [1, 0]);
+
   const textOpacity = useTransform(smoothProgress, [0.5, 0.7], [0, 1]);
   const textX = useTransform(smoothProgress, [0.5, 0.75], [100, 0]);
 
@@ -31,7 +36,7 @@ const LogoAnimation: React.FC = () => {
 
           {/* HEART */}
           <motion.div
-            style={{ scale: heartScale }}
+            style={{ scale: heartScale, opacity: heartOpacity }}
             className="z-10 flex-shrink-0"
           >
             <svg
@@ -128,7 +133,7 @@ const LogoAnimation: React.FC = () => {
             className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center"
             style={{ opacity: useTransform(smoothProgress, [0, 0.05], [1, 0]) }}
           >
-            <p className="text-neutral-500 text-[11px] uppercase tracking-[0.4em] mb-4">
+            <p className="text-neutral-500 text-[10px] uppercase tracking-[0.4em] mb-8">
               Keep Scrolling
             </p>
             <motion.div

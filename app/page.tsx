@@ -67,11 +67,35 @@ const App: React.FC = () => {
             href={`#${section.id}`}
             className="group flex items-center gap-4"
           >
-            <div className={`h-px transition-all duration-300 ${
-              activeSection === section.id
-                ? 'w-16 bg-[#f4538a]'
-                : 'w-8 bg-neutral-700 group-hover:w-12 group-hover:bg-neutral-500'
-            }`} />
+            <motion.div
+              className={`h-px transition-all duration-300 relative overflow-hidden ${
+                activeSection === section.id ? 'w-16' : 'w-8 group-hover:w-12'
+              }`}
+            >
+              {activeSection === section.id ? (
+                <motion.div
+                  className="absolute inset-0"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent 0%, #f4538a 50%, transparent 100%)'
+                  }}
+                  animate={{
+                    opacity: [0.6, 1, 0.6],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              ) : (
+                <div
+                  className="absolute inset-0 group-hover:opacity-100 transition-opacity"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent 0%, rgba(115, 115, 115, 0.7) 50%, transparent 100%)'
+                  }}
+                />
+              )}
+            </motion.div>
             <span className={`text-[10px] tracking-[0.3em] font-bold transition-colors duration-300 ${
               activeSection === section.id
                 ? 'text-[#f4538a]'
@@ -89,7 +113,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Introduction Section */}
-      <section id="introduction" className="px-6 md:px-20 py-32 md:py-60 relative overflow-hidden bg-black">
+      <section id="introduction" className="px-6 md:px-20 py-32 md:py-60 relative overflow-hidden z-10">
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -134,24 +158,24 @@ const App: React.FC = () => {
               ملاحظة : لا نقوم باستقبال الطلبات الخاصة بالواجبات القصيرة او الامتحانات او مقابلات العمل أو اي طلبات أخرى لا يستطيع من خلالها الطالب تطبيق المشروع و الاستفادة منه
             
             </p>
-            <div className="mt-13 flex flex-wrap gap-8">
+            <div className="mt-13 flex flex-wrap gap-4 md:gap-6 lg:gap-8 justify-center md:justify-start">
               {[
                 { icon: <Instagram size={24} />, link: "https://www.instagram.com/codelikeagirlcs/", label: "Instagram" },
                 { icon: <MessageCircle size={24} />, link: "https://wa.me/971507690917", label: "WhatsApp" },
                 { icon: <LucideMail size={24} />, link: "mailto:codelikeagirlcs@gmail.com", label: "Email" },
 
               ].map((social, idx) => (
-                <a 
+                <a
                   key={idx}
-                  href={social.link} 
+                  href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 text-[#f4538a] hover:text-white transition-all duration-300 group"
+                  className="flex items-center gap-3 md:gap-4 text-[#f4538a] hover:text-white transition-all duration-300 group"
                 >
-                  <span className="p-4 rounded-2xl border border-neutral-800 group-hover:border-[#f4538a] group-hover:bg-[#f4538a] group-hover:text-white transition-all">
+                  <span className="p-3 md:p-4 rounded-xl md:rounded-2xl border border-neutral-800 group-hover:border-[#f4538a] group-hover:bg-[#f4538a] group-hover:text-white transition-all">
                     {social.icon}
                   </span>
-                  <span className="text-xs uppercase tracking-[0.3em] font-grotesk font-bold">
+                  <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-grotesk font-bold">
                     {social.label}
                   </span>
                 </a>
@@ -167,7 +191,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="work" className="px-6 md:px-20 py-32 md:py-48 bg-neutral-950/50">
+      <section id="work" className="px-6 md:px-20 py-32 md:py-48 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-12">
             <div className="max-w-2xl">
@@ -241,7 +265,7 @@ const App: React.FC = () => {
       </section> */}
 
       {/* Contact Section */}
-      <section id="contact" className="px-6 md:px-20 py-32 md:py-48">
+      <section id="contact" className="px-6 md:px-20 py-32 md:py-48 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
             <div>
@@ -282,7 +306,30 @@ const App: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <footer className="px-6 md:px-20 py-20 bg-black border-t border-neutral-900">
+      <footer className="px-6 md:px-20 py-20 relative z-10">
+        {/* Animated decorative line */}
+        <div className="max-w-7xl mx-auto mb-12">
+          <motion.div
+            className="h-px w-full relative overflow-hidden"
+          >
+            <motion.div
+              className="absolute inset-0"
+              style={{
+                background: 'linear-gradient(90deg, transparent 0%, #f4538a 50%, transparent 100%)'
+              }}
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+                scaleX: [0.8, 1, 0.8],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </motion.div>
+        </div>
+
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
           <div className="flex flex-col items-center md:items-start">
             <div className="text-2xl font-black tracking-tighter uppercase mb-2">
