@@ -30,7 +30,7 @@ const LogoAnimation: React.FC = () => {
   const pinkShade = '#c13d60';
 
   return (
-    <div ref={containerRef} className="h-[300vh] relative bg-black">
+    <div ref={containerRef} className="h-[150vh] md:h-[200vh] lg:h-[250vh] relative bg-black">
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
         <div className="flex items-center justify-center relative w-full max-w-6xl px-4">
 
